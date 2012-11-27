@@ -34,3 +34,6 @@ gem 'unicorn'
 gem 'devise'
 gem "devise-guests", "~> 0.2"
 gem 'therubyracer'
+
+gem 'semver'
+gem 'bagit', :git => "git://github.com/no-reply/bagit.git"

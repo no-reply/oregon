@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/no-reply/bagit.git
+  revision: f304c381c7fadcb2d995460681e140b74afb4237
+  specs:
+    bagit (0.2.0)
+      validatable (~> 1.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -224,6 +231,7 @@ GEM
       nokogiri (>= 1.4.0)
       nori (~> 1.1.0)
       wasabi (~> 2.5.0)
+    semver (1.0.1)
     solrizer (2.0.0.rc6)
       daemons
       mediashelf-loggable (~> 0.4.7)
@@ -254,6 +262,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    validatable (1.6.7)
     warden (1.2.1)
       rack (>= 1.0)
     wasabi (2.5.1)
@@ -265,6 +274,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bagit!
   blacklight (= 4.0.0.pre7)
   bootstrap-sass
   coffee-rails (~> 3.2.1)
@@ -276,6 +286,7 @@ DEPENDENCIES
   rails (= 3.2.9)
   rspec-rails
   sass-rails (~> 3.2.3)
+  semver
   sqlite3
   therubyracer
   uglifier (>= 1.0.3)
