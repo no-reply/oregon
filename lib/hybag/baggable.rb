@@ -3,7 +3,10 @@ require 'bagit'
 module Hybag
   module Baggable
 
-    def write_bag(path = Dir[Rails.root.join("tmp/bags")])
+    def write_bag(path = '')
+      raise Exception if self.pid == '__DO_NOT_USE__'
+      path = Rails.root.join("tmp/bags", path)
+      FileUtils.mkdir path unless File.directory? path
       bag_path = File.join(path, self.pid)
       bag = BagIt::Bag.new(bag_path)
       #TODO: Writing to bag files is naive; reads file out and writes it.
