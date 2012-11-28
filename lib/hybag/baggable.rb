@@ -5,7 +5,7 @@ module Hybag
 
     def write_bag(path = Dir[Rails.root.join("tmp/bags")])
       bag_path = File.join(path, self.pid)
-      BagIt::Bag.new(bag_path)
+      bag = BagIt::Bag.new(bag_path)
       #TODO: Writing to bag files is naive; reads file out and writes it.
       #      Possibly there is a better way to do this.
 
