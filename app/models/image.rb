@@ -1,5 +1,8 @@
 require 'datastreams/oregon_rdf_datastream'
 class Image < ActiveFedora::Base
+
+  include Hybag::Baggable
+
   has_metadata :name => "descMetadata", :type => OregonRDFDatastream
 
   # see https://github.com/mediashelf/sufia/blob/master/app/models/datastreams/file_content_datastream.rb
