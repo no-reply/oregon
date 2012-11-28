@@ -12,7 +12,7 @@ describe Hybag do
     end
 
     it "should know it is baggable" do
-      @image.baggable.should == true
+      @image.baggable?.should == true
     end
 
     it "should give back a valid bag" do

@@ -9,32 +9,32 @@ module Hybag
       #TODO: Writing to bag files is naive; reads file out and writes it.
       #      Possibly there is a better way to do this.
 
-      # add the content datastreams
-      bag_contents.each do |label, ds|
-        bag.add_file(label + mime_extension(ds)) { |f|
-          f.puts ds.content
-        }
+      # add the datastreams to the bag, then manifest
+      datastreams.each do |label, ds|
+        unless ds.content.nil?
+          if bag_contents.include? ds
+            bag.add_file(label + mime_extension(ds)) { |f|
+              f.puts ds.content
+            }
+          elsif bag_tags.include? ds
+            bag.add_tag_file(label + mime_extension(ds)) { |f|
+              f.puts ds.content
+            }          
+          elsif bag_fedora_tags.include? ds
+            bag.add_tag_file('fedora/' + label + mime_extension(ds)) { |f|
+              f.puts ds.content
+            }
+          end
+        end
       end
+
       bag.manifest!
-
-      # add non-fedora tag files
-      bag_tags.each do |label, ds|
-        bag.add_tag_file(label + mime_extension(ds)) { |f|
-          f.puts ds.content
-        }
-      end
-
-      # add fedora tag files
-      bag_fedora_tags.each do |label, ds|
-        bag.add_tag_file('fedora/' + label + mime_extension(ds)) { |f|
-          f.puts ds.content
-        }
-      end
-
       return bag
     end
 
-
+    def baggable?
+      true
+    end
 
     private
 
